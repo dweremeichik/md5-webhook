@@ -2,9 +2,15 @@ const restify = require('restify')
 const md5File = require('md5-file')
 const { queryParser, bodyParser, serveStatic } = require('restify-plugins')
 const errors = require('restify-errors')
-const { directory, hostname, port } = require('./config')
+const { directory, hostname, port, timeout } = require('./config')
 
 const server = restify.createServer();
+
+function minToMill (min) {
+  return min * 60000
+}
+
+server.server.setTimeout(minToMill(timeout));
 
 server.use(queryParser());
 server.use(bodyParser());

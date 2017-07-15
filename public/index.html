@@ -41,6 +41,11 @@
       button.disabled = false
       outputName.textContent = file
       sum.textContent = text
+    }).catch(err => {
+      outputName.textContent = 'Processing failed due to network'
+      sum.textContent = 'A timeout may have occured'
+      fileName.disabled = false
+      button.disabled = false
     })
   }
   </script>
