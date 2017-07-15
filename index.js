@@ -2,7 +2,7 @@ const restify = require('restify')
 const md5File = require('md5-file')
 const { queryParser, bodyParser, serveStatic } = require('restify-plugins')
 const errors = require('restify-errors')
-const { directory, hostname, port } = require('config')
+const { directory, hostname, port } = require('./config')
 
 const server = restify.createServer();
 
