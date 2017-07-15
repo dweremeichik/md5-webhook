@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MD5Sum</title>
+  </head>
+  <body>
+  <input type="text" id="fileName" name="fileName" value="" placeholder="File Name">
+  <button type="button" id="generate" name="generate">Generate Sum</button>
+  <div>
+    <div>
+      File name: <span id="outputName"><span>
+    </div>
+    <div>
+      Check sum: <span id="sum"><span>
+    </div>
+  </div>
+  <script>
+  const sum = document.getElementById('sum')
+  const outputName = document.getElementById('outputName')
+  const fileName = document.getElementById('fileName')
+  const button = document.getElementById('generate')
+  button.addEventListener('click', function(){
+    fileName.disabled = true
+    button.disabled = true
+    outputName.textContent = 'Please wait...'
+    sum.textContent = 'Processing checksum...'
+    getSum(fileName.value)
+  })
+  function getSum(file) {
+    fetch('http://' + window.location.host + '/md5sum/' + encodeURIComponent(file)).then((response) => {
+      if (response.ok){
+        return response.text()
+      }
+      return response.json().then((error) => {
+        console.log(error)
+        return error.message
+      })
+    }).then((text) => {
+      fileName.disabled = false
+      button.disabled = false
+      outputName.textContent = file
+      sum.textContent = text
+    })
+  }
+  </script>
+  </body>
+</html>

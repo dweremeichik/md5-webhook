@@ -1,0 +1,21 @@
+{
+  "name": "md5-webhook",
+  "version": "1.0.0",
+  "description": "Web hook for getting the md5sum of files in a given directory.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "md5",
+    "sum"
+  ],
+  "author": "Dylan Weremeichik",
+  "license": "ISC",
+  "dependencies": {
+    "md5-file": "^3.1.1",
+    "restify": "^5.0.0",
+    "restify-errors": "^4.3.0",
+    "restify-plugins": "^1.6.0"
+  }
+}
